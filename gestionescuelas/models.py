@@ -1,7 +1,5 @@
 from django.db import models
 
-
-
 class Basic(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -16,8 +14,6 @@ class Persona(models.Model):
     last_name = models.CharField(max_length=100, blank=True, default='')
  
 
-
-    
   
 # Create your models here.
 class Escuela(Basic):
