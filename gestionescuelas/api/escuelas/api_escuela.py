@@ -1,10 +1,11 @@
 from gestionescuelas.models import Escuela
 from gestionescuelas.api.escuelas.serializers import EscuelaSerializer
-from rest_framework import permissions, status
+from rest_framework import filters, permissions, status
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from django.http.response import Http404
 from rest_framework.response import Response
+from rest_framework import generics
 
 class EscuelaList(APIView):
     queryset = Escuela.objects.all()
@@ -27,3 +28,10 @@ class EscuelaList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class EscuelaAPIView(generics.ListCreateAPIView):
+    search_fields = ['nombre']
+    filter_backends = (filters.SearchFilter,)
+    queryset = Escuela.objects.all()
+    serializer_class = EscuelaSerializer
