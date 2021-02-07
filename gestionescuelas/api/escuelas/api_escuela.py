@@ -1,7 +1,10 @@
 from gestionescuelas.models import Escuela
+from gestionescuelas.api.escuelas.serializers import EscuelaSerializer
 from rest_framework import permissions, status
+from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from django.http.response import Http404
+from rest_framework.response import Response
 
 class EscuelaList(APIView):
     queryset = Escuela.objects.all()
@@ -14,9 +17,9 @@ class EscuelaList(APIView):
             raise Http404
 
     def get(self, request):
-        Escuelas = Escuela.objects.all()
-        Escuelas_serializer = EscuelaSerializer(Escuelas, many=True)
-        return Response(Escuelas_serializer.data, status= status.HTTP_200_OK)
+        escuelas = Escuela.objects.all()
+        object_serializer = EscuelaSerializer(escuelas, many=True)
+        return Response(object_serializer.data, status= status.HTTP_200_OK)
 
     def post(self, request, format=None):
         serializer = EscuelaSerializer(data = request.data)
