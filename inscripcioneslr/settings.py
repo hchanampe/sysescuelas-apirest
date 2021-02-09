@@ -76,15 +76,15 @@ WSGI_APPLICATION = 'inscripcioneslr.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-    # MySQL engine. Powered by the mysqlclient module.
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'gestionescuelas',
-    'USER': 'djangouser',
-    'PASSWORD': 'ThePassword',
-    'HOST': 'localhost',
-    'PORT': '3307',
-  }
+    'default': {
+        # MySQL engine. Powered by the mysqlclient module.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gestionescuelas',
+        'USER': 'djangouser',
+        'PASSWORD': 'ThePassword',
+        'HOST': 'gestion_escuelas_dbmysql',
+        'PORT': '3306',
+    }
 }
 
 

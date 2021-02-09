@@ -16,10 +16,6 @@ class Persona(models.Model):
     #fecha_nacimiento = models.DateField
 
 
-
-    
-
-  
 # Create your models here.
 class Escuela(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
