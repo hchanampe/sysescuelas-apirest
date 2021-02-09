@@ -10,9 +10,14 @@ class Basic(models.Model):
         ordering = ['-created']
 
 class Persona(models.Model):
-    name = models.CharField(max_length=100, blank=True, default='')
-    last_name = models.CharField(max_length=100, blank=True, default='')
- 
+    nombre = models.CharField(max_length=100, blank=False)
+    apellido = models.CharField(max_length=100, blank=False)
+    documento = models.IntegerField(max_length=10, blank=False)
+    #fecha_nacimiento = models.DateField
+
+
+
+    
 
   
 # Create your models here.
