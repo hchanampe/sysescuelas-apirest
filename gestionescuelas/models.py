@@ -37,6 +37,20 @@ class Escuela(models.Model):
         managed = False
         db_table = 'escuelas_primarias'
 
+
+class Institucion(models.Model):
+    tipo = models.CharField(max_length=60, blank=True, null=True)
+    categoria = models.CharField(max_length=2, blank=True, null=True)
+    cue = models.CharField(max_length=7, blank=True, null=True)
+    nombre = models.CharField(max_length=47, blank=True, null=True)
+    domicilio = models.CharField(max_length=55, blank=True, null=True)
+    turno = models.CharField(max_length=5, blank=True, null=True)
+    localidad = models.CharField(max_length=23, blank=True, null=True)
+    porcentaje_zona = models.CharField(max_length=5, blank=True, null=True)
+    zona = models.CharField(max_length=1, blank=True, null=True)
+
     class Meta:
         managed = False
-        db_table = 'escuelas_primarias'
+        db_table = 'instituciones'
+
+
