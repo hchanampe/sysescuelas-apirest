@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'gestionescuelas',
         'USER': 'testapi',
         'PASSWORD': 'abc123',
-        'HOST': 'gestionedudb',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }

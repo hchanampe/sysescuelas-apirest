@@ -9,11 +9,40 @@ class Basic(models.Model):
         abstract=True
         ordering = ['-created']
 
+class Institucion(models.Model):
+    tipo = models.CharField(max_length=60, blank=True, null=True)
+    categoria = models.CharField(max_length=2, blank=True, null=True)
+    cue = models.CharField(max_length=7, blank=True, null=True)
+    nombre = models.CharField(max_length=47, blank=True, null=True)
+    domicilio = models.CharField(max_length=55, blank=True, null=True)
+    turno = models.CharField(max_length=5, blank=True, null=True)
+    localidad = models.CharField(max_length=23, blank=True, null=True)
+    porcentaje_zona = models.CharField(max_length=5, blank=True, null=True)
+    zona = models.CharField(max_length=1, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'instituciones'
 class Persona(models.Model):
-    nombre = models.CharField(max_length=100, blank=False)
-    apellido = models.CharField(max_length=100, blank=False)
-    documento = models.IntegerField(max_length=10, blank=False)
-    #fecha_nacimiento = models.DateField
+    nombre = models.CharField(max_length=100, null=False, default='')
+    apellido = models.CharField(max_length=100, null=False, default='')
+    documento = models.IntegerField(null=True, blank=True)
+    fecha_nacimiento = models.DateField(null=True, blank=True)
+
+
+    @property
+    def nombre_completo(self):
+        return '%s %s' % (self.nombre, self.apellido)
+
+class Tutor(models.Model):
+    persona = models.ForeignKey(Persona,on_delete=models.CASCADE)
+
+class Alumno(models.Model):
+    persona = models.ForeignKey(Persona, on_delete=models.CASCADE)
+    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
+    #tutor = models.ManyToManyField
+
+    
 
 
 # Create your models here.
@@ -38,19 +67,6 @@ class Escuela(models.Model):
         db_table = 'escuelas_primarias'
 
 
-class Institucion(models.Model):
-    tipo = models.CharField(max_length=60, blank=True, null=True)
-    categoria = models.CharField(max_length=2, blank=True, null=True)
-    cue = models.CharField(max_length=7, blank=True, null=True)
-    nombre = models.CharField(max_length=47, blank=True, null=True)
-    domicilio = models.CharField(max_length=55, blank=True, null=True)
-    turno = models.CharField(max_length=5, blank=True, null=True)
-    localidad = models.CharField(max_length=23, blank=True, null=True)
-    porcentaje_zona = models.CharField(max_length=5, blank=True, null=True)
-    zona = models.CharField(max_length=1, blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'instituciones'
 
 
