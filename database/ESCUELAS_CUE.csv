@@ -1,5 +1,4 @@
-TIPO;categoria;cue;nombre;domicilio;turno;localidad;porcentaje_zona;ZONA
-;;;CASA CENTRAL;';M-T;LA RIOJA;;B
+tipo;categoria;cue;nombre;domicilio;turno;localidad;porcentaje_zona;zona
 P.H.;1º;4600246;PABLO PIZZURNO;GREGORIO CHAVEZ Nº 150 ;M-T;LOS SARMIENTOS;10;D
 ;1º;4600310;TIMOREO GORDILLO;CAMINO DEL PEREGRINO S/N;M-T;MALLIGASTA;30;D
 P.H.;1º;4600178;JOAQUIN V. GONZALEZ;JOAQUIN VICTOR GONZALEZ S/N;M-T;NONOGASTA;30;D

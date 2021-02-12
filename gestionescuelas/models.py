@@ -24,10 +24,14 @@ class Institucion(models.Model):
         managed = False
         db_table = 'instituciones'
 class Persona(models.Model):
-    nombre = models.CharField(max_length=100, null=False, default='')
-    apellido = models.CharField(max_length=100, null=False, default='')
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
     documento = models.IntegerField(null=True, blank=True)
     fecha_nacimiento = models.DateField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    localidad = models.CharField(max_length=100, null=True, blank=True)
+    departamento = models.CharField(max_length=100, null=True, blank=True)
+    nacionalidad = models.CharField(max_length=100, blank=False, default = 'Argentino')
 
 
     @property
@@ -66,6 +70,7 @@ class Escuela(models.Model):
         managed = False
         db_table = 'escuelas_primarias'
 
+"""class Inscripcion(Basic):"""
 
 
 

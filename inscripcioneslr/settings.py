@@ -80,8 +80,8 @@ DATABASES = {
         # MySQL engine. Powered by the mysqlclient module.
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gestionescuelas',
-        'USER': 'testapi',
-        'PASSWORD': 'abc123',
+        'USER': 'root',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306',
     }
