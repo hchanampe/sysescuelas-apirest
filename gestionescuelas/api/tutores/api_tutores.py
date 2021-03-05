@@ -5,18 +5,14 @@ from rest_framework import filters, permissions, status
 from rest_framework.decorators import action
 from django.http.response import Http404
 from rest_framework.response import Response
+from rest_framework import viewsets
 
-class TutorAPIView(APIView):
-    """ Tutor API View"""
+class TutorAPIView(viewsets.ModelViewSet):
+    """ Tutor API View """
     queryset = Tutor.objects.all()
-
-    def get(self, request, format=None):
-        """ get all Tutores"""
-        tutores = Tutor.objects.all()
-        object_serializer = TutorSerializer(tutores, many=True)
-        return Response(object_serializer.data, status= status.HTTP_200_OK)
-
-
+    serializer_class = TutorSerializer
+    
+   
 
 """ 
 class TutorViewSet(ViewSet):
