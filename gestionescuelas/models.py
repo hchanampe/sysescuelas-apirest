@@ -24,6 +24,9 @@ class Institucion(models.Model):
         db_table = 'instituciones'
         managed = 'false'
 
+    def __str__(self):
+        print('%s', self.nombre)
+
 class Persona(models.Model):
     nombre = models.CharField(max_length=100, null=True, blank=True)
     apellido = models.CharField(max_length=100,null=True, blank=True)
@@ -70,7 +73,7 @@ class Inscripcion(Basic):
                                     Institucion,
                                     on_delete = models.CASCADE
                                     )
-    alummno = models.ForeignKey(
+    alumno = models.ForeignKey(
                                 Alumno,
                                 on_delete=models.CASCADE
                                 )
@@ -82,13 +85,21 @@ class Inscripcion(Basic):
 
     documentacion = models.BooleanField(default=False)
     
-    nivel_educativo = models.CharField(max_length = 100,
+    nivel_educativo = models.CharField(
+                                       max_length = 100,
             	                       blank = False,
-                                       default = 'Primario')
+                                       default = 'Primario'
+                                       )
     
-    codigo_inscripcion = models.UUIDField(default=uuid.uuid4,
-                                          editable=False)
+    codigo_inscripcion = models.UUIDField(
+                                          default=uuid.uuid4,
+                                          editable=False
+                                          )
 
-    curso = models.CharField(max_length=30)
+    curso = models.CharField(
+                             max_length=30,
+                             null=True,
+                             blank=True
+                             )
 
 
