@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+
 class Basic(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -43,6 +44,12 @@ class Persona(models.Model):
     def __str__(self):
         return '%s %s' % (self.nombre, self.apellido)
 
+    def __eq__(self, other): 
+        if not isinstance(other, Persona):
+            # don't attempt to compare against unrelated types
+            return NotImplemented
+
+        return self.documento == other.documento
 
 class Tutor(models.Model):
     persona = models.OneToOneField(
