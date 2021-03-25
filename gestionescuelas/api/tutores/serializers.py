@@ -12,6 +12,7 @@ class TutorSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         persona_data = validated_data.pop('persona')
-        persona, c = Persona.objects.get_or_create(**persona_data)
-        instance  = Tutor.objects.create(persona=persona, **validated_data)
+        if persona_data is not None:
+            persona, c = Persona.objects.get_or_create(**persona_data)
+            instance, created  = Tutor.objects.get_or_create(persona=persona, **validated_data)
         return instance

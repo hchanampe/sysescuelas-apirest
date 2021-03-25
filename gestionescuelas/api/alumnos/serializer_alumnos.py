@@ -11,6 +11,9 @@ class AlumnoSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         persona_data = validated_data.pop('persona')
-        persona, c = Persona.objects.get_or_create(**persona_data)
-        instance  = Alumno.objects.create(persona=persona, **validated_data)
-        return instance
+        if persona_data is not None:
+            persona, created = Persona.objects.get_or_create(**persona_data)
+            instance, created_  = Alumno.objects.get_or_create(persona=persona, **validated_data)
+            
+            return instance
+    
